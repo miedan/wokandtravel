@@ -12,7 +12,7 @@ type MapViewProps = {
 const MapView: React.FC<MapViewProps> = ({ companies, onContactCompany, contactedCompany }) => {
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: '100%', width: '100%', zIndex: 0 }}>
       <MapContainer
         center={[-27.85, 153.4]}
         zoom={10}

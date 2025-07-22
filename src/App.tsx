@@ -48,10 +48,10 @@ const App: React.FC = () => {
   },[searchTerm, selectedIndustry, selectedState])
 
   return (
-  <div className="flex flex-col h-full bg-gray-100">
+  <div className="flex flex-col min-h-screen bg-gray-100">
       <Header />
 
-      <div className="flex flex-col md:flex-row gap-6 mx-6 mb-4 mt-6 md:overflow-y-hidden">
+      <div className="flex flex-col md:flex-row gap-6 mx-6 mb-4 mt-6 flex-grow">
         <div className=" w-full md:w-1/2 flex flex-col rounded-lg bg-white shadow-lg shadow-gray-400 gap-0 p-4  ">
           <FilterBar
             searchTerm={searchTerm}
@@ -65,7 +65,7 @@ const App: React.FC = () => {
             contactedCount={contactedCompanies.size}
           />
 
-          <div className="flex-1  mt-4">
+          <div className="flex-1  mt-4 overflow-y-auto">
             <JobList
               jobs={filteredJobs}
               onContactCompany={handleContactJob}
@@ -75,7 +75,7 @@ const App: React.FC = () => {
         </div>
 
         <div className="w-full md:w-1/2 mt-6 md:mt-0">
-          <MapView companies={JobOpportunities} onContactCompany={handleContactJob} contactedCompany={contactedCompanies} />
+          <MapView companies={filteredJobs} onContactCompany={handleContactJob} contactedCompany={contactedCompanies} />
         </div>
       </div>
     </div>

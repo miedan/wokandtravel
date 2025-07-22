@@ -23,7 +23,7 @@ const JobList:React.FC<jobProps> = ({
  }
 
   return (
-    <div className='space-y-4 flex flex-col items-center    max-h-screen overflow-y-auto'>
+    <div className='space-y-4 flex flex-col items-center max-h-screen overflow-y-auto'>
 
 
       {

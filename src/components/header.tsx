@@ -6,7 +6,7 @@ import { JobOpportunities } from '../data/companies';
 const Header = () => {
   return (
 
-<header className="bg-[#209C59]  backdrop-blur-sm sticky top-0 z-50" 
+<header className="bg-[#209C59]  backdrop-blur-sm sticky top-0 z-[999]" 
 >
         <div className="px-4  md:px-6 ">
           <div className="flex items-center justify-between h-18">

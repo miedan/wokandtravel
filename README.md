@@ -1,49 +1,73 @@
-# Frontend Coding Challenge: Work & Travel Job Finder
+Great! Here's a clean, professional README based on your info:
 
-## Overview
-You are a frontend developer at Work and Travel Guide, tasked to build a job search interface that will be integrated into app.workandtravelguide.org, helping international workers find employment opportunities in Australia.
+````markdown
+# Wok and Travel - Job Opportunities in Australia
 
-## The Goal
-Create an intuitive application where users can:
-- Browse available job opportunities in an intuitive list view on the left, with a visualization of the map of opportunities on the right side
-- Have all the information available that they require for contacting them at a glance
-- Filter companies by location and industry
-- Be able to mark employers that they've already contacted (does not need to be stored in any state)
+Wok and Travel is a web application that helps users find job opportunities across different parts of Australia. The platform provides an intuitive interface to browse available positions and view their locations on an interactive map.
 
-## Provided Data Structure
-```javascript
-const company = {
-  id: 'job-123',
-  email: 'hr@surfshop.com',
-  state: 'NSW',
-  firstName: 'Sarah',
-  lastName: 'Johnson',
-  phoneNumber: '+61535373443',
-  companyName: 'Pacific Surf Shop',
-  address: '123 Campbell Parade, Bondi Beach NSW 2026',
-  latitude: -33.8915,
-  longitude: 151.2767,
-  industry: 'Retail & Tourism'
-};
+## Features
+
+- Browse job listings by industry and location filters
+- Search jobs by company name, contact person, email, or address
+- Interactive map powered by OpenStreetMap and Leaflet to visualize job locations
+- Mark companies as contacted to keep track of your applications
+- Responsive and modern UI using Tailwind CSS
+
+## Technologies Used
+
+- React
+- Vite
+- Leaflet (with OpenStreetMap)
+- Tailwind CSS
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher recommended)
+- npm
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+ git clone https://github.com/miedan/wokandtravel.git job-search-interface
+cd job-search-interface
+
+````
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser and visit:
+
+   ```
+   http://localhost:3000
+   ```
+
+### Build for Production
+
+To create an optimized production build, run:
+
+```bash
+npm run build
 ```
 
-You'll be provided with a JSON file containing job opportunities across Australia.
+The build files will be output to the `dist` directory.
 
-## Technical Stack
-- React with TypeScript
-- Tailwind CSS
-- Openstreetmap library
-- Vite
+## Deployment
 
-## Your own ideas
-If you have more ideas beyond this spec to make the functionality better for users, please feel free to implement that!
+The app is deployed on Vercel and can be accessed here:
 
-## Submission Requirements
-- GitHub repository
-- Brief README with setup instructions
+[https://wokandtravel-ek7o30y85-miedans-projects.vercel.app](https://wokandtravel-ek7o30y85-miedans-projects.vercel.app)
 
-## Copyright / License
-We will not be copying any of the code snippets you are developing here into our real production environment without prior consent from you.
-Equally, the content from this coding challenge should not be distributed from you.
-
-Good luck!

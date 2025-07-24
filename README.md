@@ -71,3 +71,4 @@ The app is deployed on Vercel and can be accessed here:
 
 [https://wokandtravel-ek7o30y85-miedans-projects.vercel.app](https://wokandtravel-ek7o30y85-miedans-projects.vercel.app)
 
+<img width="1366" height="660" alt="image" src="https://github.com/user-attachments/assets/63f6c5cc-89d3-42bf-9d0c-2550e859a76b" />

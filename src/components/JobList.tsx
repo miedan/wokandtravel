@@ -37,7 +37,7 @@ const JobList:React.FC<jobProps> = ({
                   {isContacted && (
                     <Badge variant="secondary" className="bg-green-100 text-green-800 flex items-center gap-1 py-1 px-2 rounded-full text-xs">
                       <CheckCircle2 className="h-4 w-4" />
-                      Contacted
+                      
                     </Badge>
                   )}
                 </div>

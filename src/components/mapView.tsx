@@ -31,18 +31,21 @@ const MapView: React.FC<MapViewProps> = ({ companies, onContactCompany, contacte
             position={[company.latitude, company.longitude]}
           >
             <Popup>
-              <div className='flex flex-col gap-[1px]'>
-                <strong>{company.companyName}</strong><br />
-                <span>{company.industry}</span><br />
-                <span>{company.address}</span><br />
-                <span>Email: {company.email}</span><br />
-                <span>Phone: {company.phoneNumber}</span>
-                 <button  
-                 className='w-full bg-[#209C59] rounded-lg p-1.5 text-white hover:bg-[#39644d]'
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onContactCompany(company.companyId);
-                  }}
+              <div className="  w-64 p-2">
+                <h3 className="font-bold text-base md:text-lg mb-2">{company.companyName}</h3>
+                <div className="space-y-0.5 text-sm">
+                  <p className="text-gray-600">{company.industry}</p>
+                  <p className="text-gray-600">{company.address}</p>
+                  <a href={`mailto:${company.email}`} className="text-[#25D366] font-medium hover:underline block truncate">{company.email}</a>
+                  <a href={`tel:${company.phoneNumber}`} className=" font-medium hover:underline text-[#25D366] block truncate">{company.phoneNumber}</a>
+                </div>
+                <button
+                  className={`w-full mt-2 md:mt-4 font-semibold p-1 md:py-2 md:px-4 rounded-lg transition-all duration-300 ${
+                    contactedCompany.has(company.companyId)
+                      ? 'bg-gray-200 text-black cursor-default'
+                      : 'bg-[#FFC800] text-black hover:bg-yellow-400 focus:ring-4 focus:ring-yellow-300'
+                  }`}
+                  onClick={() => onContactCompany(company.companyId)}
                 >
                   {contactedCompany.has(company.companyId) ? 'Contacted' : 'Mark as Contacted'}
                 </button>

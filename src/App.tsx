@@ -1,21 +1,17 @@
 import React, { useState, useEffect, useMemo} from 'react';
 import JobList from './components/JobList';
-// import MapView from './components/MapView';
 import FilterBar from './components/FilterBar';
 import  {JobOpportunities} from './data/companies'
 import MapView from './components/mapView';
 import Header from './components/header'
 
 const App: React.FC = () => {
-
   const [filters, setFilters] = useState({ location: '', industry: '' });
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedIndustry, setSelectedIndustry] = useState('All Industries')
   const [selectedState, setSelectedState] = useState('All States')
   const [contactedCompanies, setContactedCompanies] = useState<Set<string>>(new Set());
-
-
-
+  
    const handleContactJob = (jobId: string) => {
     setContactedCompanies(prev => {
       const newSet = new Set(prev);
@@ -48,24 +44,25 @@ const App: React.FC = () => {
   },[searchTerm, selectedIndustry, selectedState])
 
   return (
-  <div className="flex flex-col min-h-screen bg-gray-100">
+  <div className="flex flex-col min-h-screen max-w-screen md:h-screen md:overflow-hidden">
       <Header />
 
-      <div className="flex flex-col md:flex-row gap-6 mx-6 mb-4 mt-6 flex-grow">
-        <div className=" w-full md:w-1/2 flex flex-col rounded-lg bg-white shadow-lg shadow-gray-400 gap-0 p-4  ">
-          <FilterBar
-            searchTerm={searchTerm}
-            selectedIndustry={selectedIndustry}
-            selectedState={selectedState}
-            onSearchChange={setSearchTerm}
-            onIndustryChange={setSelectedIndustry}
-            onStateChange={setSelectedState}
-            totalJobs={JobOpportunities.length}
-            filteredJobs={filteredJobs.length}
-            contactedCount={contactedCompanies.size}
-          />
-
-          <div className="flex-1  mt-4 overflow-y-auto">
+      <main className="flex flex-col md:flex-row gap-6 p-4 md:flex-1 md:overflow-hidden">
+        <div className="w-full md:w-1/2 flex flex-col bg-white rounded-2xl shadow-lg md:overflow-hidden">
+          <div className="p-4">
+            <FilterBar
+              searchTerm={searchTerm}
+              selectedIndustry={selectedIndustry}
+              selectedState={selectedState}
+              onSearchChange={setSearchTerm}
+              onIndustryChange={setSelectedIndustry}
+              onStateChange={setSelectedState}
+              totalJobs={JobOpportunities.length}
+              filteredJobs={filteredJobs.length}
+              contactedCount={contactedCompanies.size}
+            />
+          </div>
+          <div className="px-6 pb-6 overflow-y-auto h-96 md:h-auto md:flex-1 mx-1 always-scrollbar">
             <JobList
               jobs={filteredJobs}
               onContactCompany={handleContactJob}
@@ -74,10 +71,10 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        <div className="w-full md:w-1/2 mt-6 md:mt-0">
+        <div className="w-full md:w-1/2 h-64 md:h-auto rounded-2xl shadow-lg ">
           <MapView companies={filteredJobs} onContactCompany={handleContactJob} contactedCompany={contactedCompanies} />
         </div>
-      </div>
+      </main>
     </div>
 );
 

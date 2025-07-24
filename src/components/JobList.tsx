@@ -23,91 +23,70 @@ const JobList:React.FC<jobProps> = ({
  }
 
   return (
-    <div className='space-y-4 flex flex-col items-center max-h-screen overflow-y-auto'>
-
-
-      {
-        jobs.map((job) => {
-
-        const isContacted = contactedCompany.has(job.companyId)
-
-        return (
-          <div className="bg-white/70 md:w-3/4 rounded-md  group transition duration-300 hover:scale-105 hover:shadow-md hover:shadow-gray-400 ease-in-out transform cursor-pointer border-2 border-gray-200 px-2     ">
-            <div className='px-4 md:px-10 py-2'>
-              <div className="flex flex-col items-start justify-between mb-4">
-               
-                      <div className="flex flex-col  gap-2 mb-3 ">
-                        <div className='flex items-center gap-2'>
-                            <h3 className="font-semibold text-lg text-foreground">{job.companyName}</h3>
-                            {isContacted && (
-                              <CheckCircle2 className="h-5 w-5 text-green-800" />
-                            )}
-                        </div>
-                        
-                        <div className='flex items-center justify-start gap-3'>
-                          <Badge variant='secondary' >{job.industry}</Badge>
-                          <Badge variant='outline' >{job.state}</Badge>
-                        </div>
-                        
-                      </div>
-               
-
-                <div className="space-y-3 mb-4">
-                  <div className="flex items-center gap-2 text-sm ">
-                    <Building2 className="h-4 w-4" />
-                    <span>Contact: {job.firstName} {job.lastName}</span>
-                  </div>
-                
-                  <div className="flex items-center gap-2 text-sm ">
-                    <MapPin className="h-4 w-4" />
-                    <span>{job.address}</span>
-                  </div>
-                
-                  <div className="flex items-center gap-2 text-sm">
-                    <Mail className="h-4 w-4 " />
-                    <a 
-                      href={`mailto:${job.email}`} 
-                      className="text-primary hover:underline"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {job.email}
-                    </a>
-                  </div>
-                
-                  <div className="flex items-center gap-2 text-sm">
-                    <Phone className="h-4 w-4 " />
-                    <a 
-                      href={`tel:${job.phoneNumber}`} 
-                      className="text-primary hover:underline"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {job.phoneNumber}
-                    </a>
-                  </div>
+    <div className='grid grid-cols-1 md:grid-cols-2 gap-4  overflow-y-auto md:full'>
+  {jobs.map((job) => {
+    const isContacted = contactedCompany.has(job.companyId);
+    return (
+      <div key={job.companyId} className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02] flex flex-col">
+        <div className='px-2 py-4 flex-grow flex flex-col'>
+          <div className="flex-grow">
+            <div className="flex items-start justify-between mb-4">
+              <div>
+                <div className="flex items-center gap-2">
+                  <h3 className="font-bold text-lg text-gray-800">{job.companyName}</h3>
+                  {isContacted && (
+                    <Badge variant="secondary" className="bg-green-100 text-green-800 flex items-center gap-1 py-1 px-2 rounded-full text-xs">
+                      <CheckCircle2 className="h-4 w-4" />
+                      Contacted
+                    </Badge>
+                  )}
                 </div>
-                <button  
-                 className='w-full bg-[#209C59] rounded-lg p-1.5 text-white hover:bg-[#39644d]'
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onContactCompany(job.companyId);
-                  }}
-                >
-                  {isContacted ? 'Contacted' : 'Mark as Contacted'}
-                </button>
+                <div className='flex items-center gap-2 mt-2'>
+                  <Badge variant='outline' className="border-gray-200 text-gray-600">{job.industry}</Badge>
+                  <Badge variant='outline' className="border-gray-200 text-gray-600">{job.state}</Badge>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-y-3 mb-5 text-sm text-gray-600">
+              <div className="flex items-center gap-3">
+                <Building2 className="h-4 w-4 text-gray-400" />
+                <span>{job.firstName} {job.lastName}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <MapPin className="h-4 w-4 text-gray-400" />
+                <span>{job.address}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail className="h-4 w-4 text-gray-400" />
+                <a href={`mailto:${job.email}`} className="text-[#25D366] font-medium hover:underline">
+                  {job.email}
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="h-4 w-4 text-gray-400" />
+                <a href={`tel:${job.phoneNumber}`} className="text-[#25D366] font-medium hover:underline">
+                  {job.phoneNumber}
+                </a>
               </div>
             </div>
           </div>
-        )
 
-    
-
-        })
-      }
-
- 
-   
-
-    </div>
+          <button
+            className={`w-full font-semibold py-3 px-4 rounded-lg transition-all duration-300 cursor-pointer ${
+              isContacted
+                ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                : 'bg-[#FFC800] text-black hover:bg-yellow-400'
+            }`}
+            onClick={() => onContactCompany(job.companyId)}
+          >
+            {isContacted ? 'Contacted' : 'Mark as Contacted'}
+          </button>
+        </div>
+      </div>
+    );
+  })}
+</div>
   );
 };
 

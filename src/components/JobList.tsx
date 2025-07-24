@@ -23,11 +23,11 @@ const JobList:React.FC<jobProps> = ({
  }
 
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 gap-4  overflow-y-auto md:full'>
+    <div className='grid grid-cols-1 md:grid-cols-2 gap-4  overflow-y-auto md:'>
   {jobs.map((job) => {
     const isContacted = contactedCompany.has(job.companyId);
     return (
-      <div key={job.companyId} className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02] flex flex-col">
+      <div key={job.companyId} className="bg-white rounded-xl border border-gray-300 shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.02] flex flex-col">
         <div className='px-2 py-4 flex-grow flex flex-col'>
           <div className="flex-grow">
             <div className="flex items-start justify-between mb-4">
